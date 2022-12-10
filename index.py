@@ -8,10 +8,10 @@ app = Flask(__name__)
 Bootstrap(app)
 
 @app.route('/')
-def home():
+def base():
   return render_template('base.html')
 
-@app.route('/index/')
+@app.route('/index')
 def index():
   return render_template('index.html')
 
