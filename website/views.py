@@ -10,4 +10,8 @@ def home():
 @views.route("/aboutme")
 def aboutme():
     return render_template("aboutme.html")
+
+@views.route("/spotifychecker")
+def spotifychecker():
+    return render_template("spotifychecker.html")
 #test test
