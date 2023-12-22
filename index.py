@@ -4,11 +4,7 @@ from flask import Flask, render_template
 #install Bootstrap
 #import Bootstrap
 from website import create_app
-
-
-
 app = create_app()
-#Bootstrap(app)
 
 @app.route('/')
 def base():
