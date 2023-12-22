@@ -1,7 +1,6 @@
-'''
 from flask import Blueprint, render_template
 
-views = Blueprint("main", __name__)
+views = Blueprint("veiws", __name__)
 
 
 @views.route("/index")
@@ -15,4 +14,3 @@ def aboutme():
 @views.route("/spotifychecker")
 def spotifychecker():
     return render_template("spotifychecker.html")
-'''
