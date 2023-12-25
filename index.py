@@ -1,10 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask
+from views import views
 
-#from flask_bootstrap 
-#install Bootstrap
-#import Bootstrap
-from website import create_app
+def create_app():
+    app = Flask(__name__, template_folder="website/templates")
+    return app
+
 app = create_app()
+
+app.register_blueprint(views, url_prefix='/')
+
+'''
 
 @app.route("/")
 def base():
@@ -17,6 +22,6 @@ def aboutme():
 @app.route("/spotifychecker")
 def spotifychecker():
   return render_template('spotifychecker.html')
-
+'''
 if __name__ == '__main__':
         app.run(debug=True)
