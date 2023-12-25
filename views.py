@@ -3,7 +3,11 @@ from flask import Blueprint, render_template
 views = Blueprint("veiws", __name__)
 
 @views.route("/")
-def home():
+def base():
+  return render_template("index.html")
+
+@views.route("/index")
+def index():
   return render_template("index.html")
 
 @views.route("/aboutme")
