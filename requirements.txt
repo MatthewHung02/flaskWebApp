@@ -1,4 +1,4 @@
 Flask==2.2.2
 werkzeug==2.2.2
 flask-bootstrap==3.3.7.1
-whitenoise>=6.4.0
+requests==2.18.3
