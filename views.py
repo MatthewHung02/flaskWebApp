@@ -3,18 +3,19 @@ from datetime import datetime, timedelta
 import urllib.parse
 import json
 import requests
+import os
 
 
 token_url = "https://accounts.spotify.com/api/token"
 base_url = "https://api.spotify.com/v1/"
 
 
-f = open('C:\\Users\\user\\Documents\\spotifycheckersecrets.txt')
-data = json.load(f)
-seatgeekid = data['sgid']
-seatgeeksecret = data['sgsecret']
-spotifyid = data['spotifyid']
-spotifysecrets = data['spotifysecret']
+#f = open('C:\\Users\\user\\Documents\\spotifycheckersecrets.txt')
+#data = json.load(f)
+seatgeekid = os.environ.get('sgid')
+seatgeeksecret = os.environ.get('sgsecret')
+spotifyid = os.environ.get('spotifyid')
+spotifysecrets = os.environ.get('spotifysecret')
 
 
 scope = "user-top-read"
