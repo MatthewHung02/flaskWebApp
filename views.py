@@ -61,7 +61,8 @@ def login():
        'client_id':spotifyclientid,  
        'type': type,
        'time_range': term,
-       'show_dialog':True
+       'show_dialog':True,
+       'redirect_uri': 'https://www.matthew-hung.com/'
      }
     
     auth_url2 = f"https://accounts.spotify.com/authorize?{urllib.parse.urlencode(paramaters)}"
