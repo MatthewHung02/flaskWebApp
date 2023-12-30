@@ -62,7 +62,8 @@ def login():
        'type': type,
        'time_range': term,
        'show_dialog':True,
-       'redirect_uri': 'https://www.matthew-hung.com/'
+       'redirect_uri': 'https://www.matthew-hung.com/',
+       'response_type' : 'code'
      }
     
     auth_url2 = f"https://accounts.spotify.com/authorize?{urllib.parse.urlencode(paramaters)}"
@@ -80,7 +81,7 @@ def callback():
          'redirect_uri' : redirect_url,
          'client_id' : spotifyid,
          'client_secret': spotifysecrets,
-         'response_type' : 'code'
+         #'response_type' : 'code'
 
       }
 
