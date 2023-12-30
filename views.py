@@ -75,7 +75,7 @@ def callback():
       return jsonify({'error':request.args['error']})
    if 'code' in request.args:
       request_body = {
-         'code' : request.args['code'],
+         #'code' : request.args['code'],
          'grant_type' : 'authorization_code',
          'redirect_uri' : redirect_url,
          'client_id' : spotifyid,
