@@ -79,7 +79,8 @@ def callback():
          'grant_type' : 'authorization_code',
          'redirect_uri' : redirect_url,
          'client_id' : spotifyid,
-         'client_secret': spotifysecrets
+         'client_secret': spotifysecrets,
+         'response_type' : 'code'
 
       }
 
