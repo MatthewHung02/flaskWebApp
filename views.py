@@ -98,8 +98,7 @@ def callback():
       session['access_token'] = tokeninfo['access_token']
       session['refresh_token'] = tokeninfo['refresh_token']
       session['expires_at'] = datetime.now().timestamp() + tokeninfo['expires_in']
-      return session['access_token']
-      #return redirect('/charts')
+      return redirect('/charts')
    
 @views.route("/charts")
 def charts():
@@ -108,7 +107,7 @@ def charts():
    if datetime.now().timestamp() > session['expires_at']:
       return redirect('/login')
    
-   headers = {'Authorization' : f"Bearer {session['access_token']}"
+   headers = {'Authorization' : f"'Bearer {session['access_token']}'"
               
    }
    response = requests.get(base_url + "me/top/artists", headers=headers)
