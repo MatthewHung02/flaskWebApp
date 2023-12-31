@@ -105,16 +105,18 @@ def charts():
    headers = {'Authorization' : f"'Bearer {session['access_token']}'"}
    response = requests.get(base_url + "me/top/artists", headers=headers)
    
-   #spotifyjson = response.json()
+   spotifyjson = response.json()
 
+
+   '''
    response = json.loads(response)
    listylist = []
    for doc in response['items']:
       listylist.append(doc['name'])
-
+   '''
    #url = baseeventURL.format("yoke-lore", seatgeekid, seatgeeksecret)
-   return listylist
-   #return jsonify(json)
+   #return listylist
+   return spotifyjson
               
    
 
