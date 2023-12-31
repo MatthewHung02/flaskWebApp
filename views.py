@@ -115,12 +115,12 @@ def charts():
    for doc in spotifyjson['items']:
       listylist.append(doc['name'])
    
-   fulllist = {}
+   fulllist = {'data' : []}
    for each in listylist:
       url = baseeventURL.format(each, seatgeekid, seatgeeksecret)
-      sgresponse = requests.get(url)
-      sg2response = json.loads(sgresponse)
-      fulllist = dict(fulllist, sg2response)
+      sg2response = requests.get(url)
+      responsejson = sg2response.json()
+      fulllist['data'].append(responsejson)   
    
    return fulllist
               
