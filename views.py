@@ -9,19 +9,26 @@ import os
 token_url = "https://accounts.spotify.com/api/token"
 base_url = "https://api.spotify.com/v1/"
 
-
-#f = open('C:\\Users\\user\\Documents\\spotifycheckersecrets.txt')
-#data = json.load(f)
+'''
+f = open('C:\\Users\\user\\Documents\\spotifycheckersecrets.txt')
+data = json.load(f)
+seatgeekid = data['sgid']
+seatgeeksecret = data['sgsecret']
+spotifyid = data['spotifyid']
+spotifysecrets = data['spotifysecret']
+'''
 seatgeekid = os.environ.get('sgid')
 seatgeeksecret = os.environ.get('sgsecret')
 spotifyid = os.environ.get('spotifyid')
 spotifysecrets = os.environ.get('spotifysecret')
 
 
+
+
 scope = "user-top-read"
 type = "artists"
 term = "medium_term"
-spotifyclientid = "499455d664a942e78b3cdaa4f47774a5"
+
 
 
 views = Blueprint("veiws", __name__)
@@ -59,7 +66,7 @@ def spotifychecker():
 @views.route("/login")
 def login():
     paramaters = {
-       'client_id':spotifyclientid,  
+       'client_id':spotifyid,  
        'type': type,
        'time_range': term,
        'show_dialog':True,
@@ -91,7 +98,8 @@ def callback():
       session['access_token'] = tokeninfo['access_token']
       session['refresh_token'] = tokeninfo['refresh_token']
       session['expires_at'] = datetime.now().timestamp() + tokeninfo['expires_in']
-      return redirect('/charts')
+      return session['access_token']
+      #return redirect('/charts')
    
 @views.route("/charts")
 def charts():
@@ -104,6 +112,7 @@ def charts():
               
    }
    response = requests.get(base_url + "me/top/artists", headers=headers)
+   
    json = response.json()
    return jsonify(json)
               
