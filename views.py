@@ -67,8 +67,8 @@ def spotifychecker():
 def login():
     paramaters = {
        'client_id':spotifyid,  
-       'type': type,
-       'time_range': term,
+       #'type': type,
+       #'time_range': term,
        'show_dialog':True,
        'redirect_uri': 'https://www.matthew-hung.com/callback',
        'response_type' : 'code'
