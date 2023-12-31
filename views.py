@@ -116,7 +116,7 @@ def charts():
    
    #url = baseeventURL.format("yoke-lore", seatgeekid, seatgeeksecret)
    #return listylist
-   return spotifyjson
+   return listylist
               
    
 
