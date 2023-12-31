@@ -102,10 +102,12 @@ def callback():
    
 @views.route("/charts")
 def charts():
+   
    if 'access_token' not in session:
       return redirect('/login')
-   if datetime.now().timestamp() > session['expires_at']:
+   if datetime.now().timestamp() > float(session['expires_at']):
       return redirect('/login')
+   
    
    headers = {'Authorization' : f"Bearer {session['access_token']}"
               
