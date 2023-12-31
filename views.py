@@ -109,7 +109,7 @@ def charts():
       return redirect('/login')
    
    
-   headers = {'Authorization' : f"Bearer {session['access_token']}"
+   headers = {'Authorization' : f"'Bearer {session['access_token']}'"
               
    }
    response = requests.get(base_url + "me/top/artists", headers=headers)
