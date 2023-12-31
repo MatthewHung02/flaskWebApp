@@ -9,6 +9,8 @@ seatgeeksecret = os.environ.get('sgsecret')
 spotifyid = os.environ.get('spotifyid')
 spotifysecrets = os.environ.get('spotifysecret')
 
+
+
 baseeventURL = "https://api.seatgeek.com/2/events?performers.slug={0}&client_id={1}&client_secret={2}"
 url = baseeventURL.format("yoke-lore", seatgeekid, seatgeeksecret)
 print(url)

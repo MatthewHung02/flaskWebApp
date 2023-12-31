@@ -9,19 +9,12 @@ import os
 token_url = "https://accounts.spotify.com/api/token"
 base_url = "https://api.spotify.com/v1/"
 
-'''
-f = open('C:\\Users\\user\\Documents\\spotifycheckersecrets.txt')
-data = json.load(f)
-seatgeekid = data['sgid']
-seatgeeksecret = data['sgsecret']
-spotifyid = data['spotifyid']
-spotifysecrets = data['spotifysecret']
-'''
 seatgeekid = os.environ.get('sgid')
 seatgeeksecret = os.environ.get('sgsecret')
 spotifyid = os.environ.get('spotifyid')
 spotifysecrets = os.environ.get('spotifysecret')
 
+baseeventURL = "https://api.seatgeek.com/2/events?performers.slug={0}&client_id={1}&client_secret={2}"
 
 
 
@@ -108,15 +101,16 @@ def charts():
       return redirect('/login')
    if datetime.now().timestamp() > float(session['expires_at']):
       return redirect('/login')
-   
-   
-   headers = {'Authorization' : f"'Bearer {session['access_token']}'"
-              
-   }
+      
+   headers = {'Authorization' : f"'Bearer {session['access_token']}'"}
    response = requests.get(base_url + "me/top/artists", headers=headers)
    
-   json = response.json()
-   return jsonify(json)
+   spotifyjson = response.json()
+   listylist = (spotifyjson['items']['name'])
+
+   #url = baseeventURL.format("yoke-lore", seatgeekid, seatgeeksecret)
+   return listylist
+   #return jsonify(json)
               
    
 
