@@ -110,7 +110,7 @@ def charts():
 
    
    response = json.loads(response)
-   '''
+   
    listylist = []
    for doc in spotifyjson['items']:
       listylist.append(doc['name'])
@@ -121,8 +121,8 @@ def charts():
       sgresponse = requests.get(url)
       sg2response = json.loads(sgresponse)
       fulllist = dict(fulllist, sg2response)
-
-   return fulllist
+   '''
+   return listylist
               
    
 
