@@ -62,16 +62,17 @@ def login():
        'type': type,
        'time_range': term,
        'show_dialog':True,
-       'redirect_uri': 'https://www.matthew-hung.com/',
+       'redirect_uri': 'https://www.matthew-hung.com/callback',
        'response_type' : 'code'
      }
     
     auth_url2 = f"https://accounts.spotify.com/authorize?{urllib.parse.urlencode(paramaters)}"
+    #return redirect(auth_url2)
     return redirect(auth_url2)
 
 @views.route("/callback")
 def callback():
-   redirect_url = "https://www.matthew-hung.com/"
+   redirect_url = "https://www.matthew-hung.com/callback"
    if 'error' in request.args:
       return jsonify({'error':request.args['error']})
    if 'code' in request.args:
@@ -91,8 +92,22 @@ def callback():
       session['access_token'] = tokeninfo['access_token']
       session['refresh_token'] = tokeninfo['refresh_token']
       session['expires_at'] = datetime.now().timestamp + tokeninfo['refresh_token']
-
-      return redirect('/spotifychecker')
+      return redirect('/charts')
+   
+@views.route("/charts")
+def charts():
+   if 'access_token' not in session:
+      return redirect('/login')
+   if datetime.now().timestamp() > session['expires_at']:
+      return redirect('/login')
+   
+   headers = {'Authorization' : f"Bearer {session['access_token']}"
+              
+   }
+   response = request.get(base_url + "me/top/artists", headers=headers)
+   json = response.json()
+   return jsonify(json)
+              
    
 
 
