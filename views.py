@@ -105,9 +105,9 @@ def charts():
    headers = {'Authorization' : f"'Bearer {session['access_token']}'"}
    response = requests.get(base_url + "me/top/artists", headers=headers)
    
-   spotifyjson = response.json()
-   
-   response = json.loads(spotifyjson)
+   #spotifyjson = response.json()
+
+   response = json.loads(response)
    listylist = []
    for doc in response['items']:
       listylist.append(doc['name'])
