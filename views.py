@@ -106,7 +106,11 @@ def charts():
    response = requests.get(base_url + "me/top/artists", headers=headers)
    
    spotifyjson = response.json()
-   listylist = (spotifyjson['items']['name'])
+   
+   response = json.loads(spotifyjson)
+   listylist = []
+   for doc in response['items']:
+      listylist.append(doc['name'])
 
    #url = baseeventURL.format("yoke-lore", seatgeekid, seatgeeksecret)
    return listylist
