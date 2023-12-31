@@ -76,7 +76,7 @@ def login():
     
     auth_url2 = f"https://accounts.spotify.com/authorize?{urllib.parse.urlencode(paramaters)}"
     #return redirect(auth_url2)
-    return auth_url2
+    return redirect(auth_url2)
 
 @views.route("/callback")
 def callback():
