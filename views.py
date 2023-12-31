@@ -109,7 +109,7 @@ def charts():
 
 
    
-   response = json.loads(response)
+   #response = json.loads(response)
    
    listylist = []
    for doc in spotifyjson['items']:
