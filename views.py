@@ -98,7 +98,8 @@ def callback():
       session['access_token'] = tokeninfo['access_token']
       session['refresh_token'] = tokeninfo['refresh_token']
       session['expires_at'] = datetime.now().timestamp() + tokeninfo['expires_in']
-      return redirect('/charts')
+      return session['access_token']
+      #return redirect('/charts')
    
 @views.route("/charts")
 def charts():
