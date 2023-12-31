@@ -1,8 +1,10 @@
 from flask import Flask
 from views import views
+import os
 
 def create_app():
     app = Flask(__name__, template_folder="website/templates")
+    app.secret_key = os.urandom(24)
     return app
 
 app = create_app()
