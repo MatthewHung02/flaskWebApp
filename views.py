@@ -42,7 +42,7 @@ def aboutme():
 def spotifychecker():
     if 'access_token' not in session:
        return redirect('/login')
-    if datetime.now().timestamp > session['expires_at']:
+    if datetime.now().timestamp > float(session['expires_at']):
        return "Sorry, log back in"
     '''
     headers = {
