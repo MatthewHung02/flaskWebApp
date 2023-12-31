@@ -116,7 +116,7 @@ def charts():
       listylist.append(doc['name'])
    
    fulllist = {}
-   for each in listylist():
+   for each in listylist:
       url = baseeventURL.format(each, seatgeekid, seatgeeksecret)
       sgresponse = requests.get(url)
       sg2response = json.loads(sgresponse)
