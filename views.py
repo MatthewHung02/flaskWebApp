@@ -71,7 +71,8 @@ def login():
        #'time_range': term,
        'show_dialog':True,
        'redirect_uri': 'https://www.matthew-hung.com/callback',
-       'response_type' : 'code'
+       'response_type' : 'code',
+       'scope' : scope
      }
     
     auth_url2 = f"https://accounts.spotify.com/authorize?{urllib.parse.urlencode(paramaters)}"
