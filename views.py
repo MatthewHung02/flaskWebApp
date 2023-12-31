@@ -25,7 +25,7 @@ spotifysecrets = os.environ.get('spotifysecret')
 
 
 
-scope = "user-top-read"
+scope = "user-top-read user-follow-read"
 type = "artists"
 term = "medium_term"
 
