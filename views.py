@@ -44,14 +44,15 @@ def spotifychecker():
        return redirect('/login')
     if datetime.now().timestamp > session['expires_at']:
        return "Sorry, log back in"
-    
+    '''
     headers = {
        'Authorization' : f"Bearer {session['access_token']}"
     }
 
     response = request.get(base_url + "me/top/artists", headers = headers)
     artists = response.json()
-    return jsonify(artists)
+    '''
+    return "something really bad happened :("
 
 #render_template("spotifychecker.html")
 
@@ -81,9 +82,7 @@ def callback():
          'grant_type' : 'authorization_code',
          'redirect_uri' : redirect_url,
          'client_id' : spotifyid,
-         'client_secret': spotifysecrets,
-         #'response_type' : 'code'
-
+         'client_secret': spotifysecrets
       }
 
       response = requests.post(token_url, data=request_body)
@@ -91,7 +90,7 @@ def callback():
 
       session['access_token'] = tokeninfo['access_token']
       session['refresh_token'] = tokeninfo['refresh_token']
-      session['expires_at'] = datetime.now().timestamp + tokeninfo['refresh_token']
+      session['expires_at'] = datetime.now().timestamp() + tokeninfo['expires_in']
       return redirect('/charts')
    
 @views.route("/charts")
