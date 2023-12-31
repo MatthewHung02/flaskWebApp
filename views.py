@@ -108,12 +108,12 @@ def charts():
    spotifyjson = response.json()
 
 
-   '''
-   response = json.loads(response)
+   
+   #response = json.loads(response)
    listylist = []
-   for doc in response['items']:
+   for doc in spotifyjson['items']:
       listylist.append(doc['name'])
-   '''
+   
    #url = baseeventURL.format("yoke-lore", seatgeekid, seatgeeksecret)
    #return listylist
    return spotifyjson
