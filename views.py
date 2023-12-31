@@ -103,7 +103,7 @@ def charts():
    headers = {'Authorization' : f"Bearer {session['access_token']}"
               
    }
-   response = request.get(base_url + "me/top/artists", headers=headers)
+   response = requests.get(base_url + "me/top/artists", headers=headers)
    json = response.json()
    return jsonify(json)
               
