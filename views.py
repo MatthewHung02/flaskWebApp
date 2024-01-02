@@ -9,6 +9,7 @@ import os
 token_url = "https://accounts.spotify.com/api/token"
 base_url = "https://api.spotify.com/v1/"
 
+#os.env uses vercel's enviroment variables
 seatgeekid = os.environ.get('sgid')
 seatgeeksecret = os.environ.get('sgsecret')
 spotifyid = os.environ.get('spotifyid')
@@ -44,15 +45,7 @@ def spotifychecker():
        return redirect('/login')
     if datetime.now().timestamp > float(session['expires_at']):
        return "Sorry, log back in"
-    '''
-    headers = {
-       'Authorization' : f"Bearer {session['access_token']}"
-    }
 
-    response = request.get(base_url + "me/top/artists", headers = headers)
-    artists = response.json()
-    '''
-    return "something really bad happened :("
 
 #render_template("spotifychecker.html")
 
@@ -74,6 +67,7 @@ def login():
 
 @views.route("/callback")
 def callback():
+   #redirect url set in spotify dev
    redirect_url = "https://www.matthew-hung.com/callback"
    if 'error' in request.args:
       return jsonify({'error':request.args['error']})
@@ -107,9 +101,6 @@ def charts():
    
    spotifyjson = response.json()
 
-
-   
-   #response = json.loads(response)
    
    listylist = []
    for doc in spotifyjson['items']:
@@ -120,7 +111,9 @@ def charts():
       url = baseeventURL.format(each, seatgeekid, seatgeeksecret)
       sg2response = requests.get(url)
       responsejson = sg2response.json()
-      fulllist['data'].append(responsejson)   
+      fulllist['data'].append(responsejson)
+
+   
    
    return fulllist
               
