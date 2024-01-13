@@ -112,10 +112,9 @@ def charts():
       sg2response = requests.get(url)
       responsejson = sg2response.json()
       fulllist['data'].append(responsejson)
-
+ 
    
-   
-   return fulllist
+   return render_template("index.html")
               
    
 
