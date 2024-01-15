@@ -112,7 +112,7 @@ def charts():
       sg2response = requests.get(url)
       responsejson = sg2response.json()
       fulllist['data'].append(responsejson)
-   return redirect('/spotifycharts')
+   return fulllist
 
 @views.route("/spotifycharts")
 def spotifycharts():
